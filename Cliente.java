@@ -2,17 +2,22 @@ import java.io.*;
 import java.net.*;
 
 public class Cliente {
-    String IP = "localhost";
     int puerto = 6996;
     Socket sCliente;
     DataInputStream bajada;
     DataOutputStream subida;
 
     public static void main(String args[]) {
-        new Cliente();
+        String IP;
+        if (args.length > 0) {
+            IP = args[0];
+        } else {
+            IP = "localhost";
+        }
+        new Cliente(IP);
     }
 
-    public Cliente() {
+    public Cliente(String IP) {
         try {
             sCliente = new Socket(IP, puerto);
             System.out.println("Conectado al servidor...");
@@ -23,7 +28,7 @@ public class Cliente {
             OutputStream os = sCliente.getOutputStream();
             subida = new DataOutputStream(os);
 
-            //COMIENZAN LOS MENSAJES
+            // COMIENZAN LOS MENSAJES
             sube("Hola");
             baja();
             sube("Como estas?");
@@ -57,7 +62,7 @@ public class Cliente {
         }
     }
 
-    public void cierra(){
+    public void cierra() {
         try {
             subida.close();
         } catch (IOException e) {
