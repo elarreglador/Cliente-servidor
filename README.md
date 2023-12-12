@@ -23,7 +23,7 @@ Las clases cliente y servidor se conectan entre si por medio de sockets de este 
 - Se establece un dialogo.
 
 
-![Imagen](https://github.com/elarreglador/Cliente-servidor/blob/main/SCREENSHOTS/Social%20preview.png)
+![Imagen](https://github.com/elarreglador/Cliente-servidor/blob/main/SCREENSHOTS/Captura%20de%20pantalla%20de%202023-12-12%2014-20-21.png)
 
 
 ************************************
@@ -51,7 +51,6 @@ java Cliente
 
 De este modo obtendremos algo similar a esto:
 
-![Imagen](https://github.com/elarreglador/Cliente-servidor/blob/main/SCREENSHOTS/Captura%20de%20pantalla%20de%202023-12-12%2014-20-21.png)
 ![Imagen](https://github.com/elarreglador/Cliente-servidor/blob/main/SCREENSHOTS/Captura%20de%20pantalla%20de%202023-12-12%2014-21-57.png)
 
 
