@@ -26,14 +26,20 @@ class Servidor {
             InputStream is = sCliente.getInputStream();
             subida = new DataInputStream(is);
 
-            //COMIENZAN LOS MENSAJES
-            sube();
-            baja("Hola soy el servidor.");
-            sube();
-            baja("Muy bien");
-            sube();
-            baja("Hasta luego");
-
+            // COMIENZAN LOS MENSAJES
+            boolean dialogo = true;
+            String mensaje;
+            while (dialogo) {
+                mensaje = sube();
+                if (mensaje.equals("[Cliente] Hola")) {
+                    baja("Hola soy el servidor.");
+                } else if (mensaje.equals("[Cliente] Como estas?")) {
+                    baja("Muy bien");
+                } else if (mensaje.equals("[Cliente] Adios")) {
+                    baja("Hasta luego");
+                    dialogo = false;
+                }
+            }
 
             System.out.println("Cerrando conexion...");
             cierra();
@@ -53,15 +59,18 @@ class Servidor {
         }
     }
 
-    public void sube() {
+    public String sube() {
         try {
-            System.out.println(subida.readUTF());
+            String mensaje = subida.readUTF();
+            System.out.println(mensaje);
+            return mensaje;
         } catch (IOException e) {
             System.out.println("Excepcion en baja(): " + e);
         }
+        return "";
     }
 
-    public void cierra(){
+    public void cierra() {
         try {
             subida.close();
         } catch (IOException e) {
